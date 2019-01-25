@@ -1,6 +1,7 @@
 # kaipee-config-thunderbird-theme
 
-My custom Thunderbird theme based of the excellent thunderbird-monterail project
+My custom Thunderbird theme based of the excellent thunderbird-monterail project.
+Colors matched with Arc Dark theme and Paper icons.
 
 ## Getting Started
 
