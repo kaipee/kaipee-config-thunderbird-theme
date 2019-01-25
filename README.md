@@ -15,10 +15,10 @@ ln -s chrome ~/.thunderbird/{user_id}.default/chrome
 ## Screenshots
 
 **Mail**
-![Kaipee Thuderbird Mail theme](chromescreenshots/kaipee_mail.png?raw=true)
+![Kaipee Thuderbird Mail theme](chrome/screenshots/kaipee_mail.png?raw=true)
 
 **Calendar**
-![Kaipee Thuderbird Calendar theme](chromescreenshots/kaipee_calendar.png?raw=true)
+![Kaipee Thuderbird Calendar theme](chrome/screenshots/kaipee_calendar.png?raw=true)
 
 ## License
 
