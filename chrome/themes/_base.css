@@ -1,0 +1,90 @@
+@namespace url("http://www.mozilla.org/keymaster/gatekeeper/there.is.only.xul");
+
+:root {
+	--system-font: initial;
+}
+
+* {
+	font-family: var(--system-font);
+}
+
+#mail-toolbar-menubar2,
+#mail-bar3
+#MsgHeadersToolbar,
+#addrbook-toolbar-menubar2,
+#ab-bar2,
+#FormatToolbar {
+	-moz-appearance: none !important;
+	border: none !important;
+}
+
+@media(-moz-windows-default-theme: 0) {
+	.menubar-text {
+		color: var(--menu-text-color) !important;
+	}
+}
+
+toolbar > toolbarbutton {
+	margin-right: 10px !important;
+	margin-left: 10px !important;
+}
+
+box, hbox, vbox, toolbox {
+	box-shadow: none !important;
+}
+
+splitter {
+	border-color: rgba(127,127,127,0.25) !important;
+}
+
+.mail-toolbox::after,
+.contentTabToolbox::after {
+  content: "";
+  display: none !important;
+  height: 0px !important;
+}
+	
+
+/****** General Tree Views *****/
+treechildren::-moz-tree-row(selected) {
+	background: var(--tree-row-highlight-background-color) !important;
+}
+
+treechildren::-moz-tree-cell-text(selected) {
+	color: var(--tree-row-highlight-text-color) !important;
+}
+
+/****** Folder Tree *****/
+treechildren:-moz-tree-twisty {
+	width: 12px !important;
+	-moz-image-region: rect(0px 12px 12px 0px) !important;
+	-moz-appearance: none !important;
+	list-style-type: image !important;
+}
+
+#folderPaneCols > hbox, #folderTree > treechildren::-moz-tree-row, .tree-scrollable-columns {
+	-moz-appearance: none !important;
+	color: inherit !important;
+	background: none !important;
+}
+
+#folderTree > hbox {
+	margin-top: 30px !important;
+}
+
+#folderTree > treechildren::-moz-tree-row {
+	margin-top: 5px !important;
+}
+
+#folderTree > treechildren::-moz-tree-row {
+	height: var(--folder-tree-row-height) !important;
+}
+
+#folderTree > treechildren::-moz-tree-row(selected) {
+	border: none !important;
+	background: var(--folder-tree-highlight-background-color) !important;
+}
+
+#folderTree > treechildren::-moz-tree-cell-text(selected) {
+	color: var(--folder-tree-highlight-text-color) !important;
+}

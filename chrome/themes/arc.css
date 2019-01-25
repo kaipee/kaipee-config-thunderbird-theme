@@ -1,0 +1,406 @@
+/*
+ * Huge thanks to the following for their inspiration/guidance:
+ * http://www.linnhe2.free-online.co.uk/thunderbird/chrome.html - For a very comprehensive guide to userChrome.css
+ * https://monterail.com/blog/2016/the-power-of-email-clients-why-did-we-redesign-thunderbird?utm_source=Thunderbird&utm_campaign=Dribbble&utm_medium=blogpost%22 - For the initial inspiration to do this 
+ * http://www.omgubuntu.co.uk/2017/04/stunning-thunderbird-redesign-mockup - For alerting me to the beautiful mockup by monterail.com
+*/
+
+@import "_base.css";
+/* @import "../tweaks/square-tabs.css"; */
+
+@import "../icons/arc-lightDarkIcons.css"; /*For dark Folder Tree, with a light Message List*/
+
+/**** Variables: Uncomment and Edit these for easy customisation ****/
+
+:root {
+  /*---- Arc colors ----*/
+  --background: #2F343F;
+  --background-panel: #3E424D;
+  --background-hover: #22242d;
+  --background-active: #4e5467;
+  --background-disabled: #3c4150;
+  --background-selected: #5294e2;
+  --background-background: #2D323D;
+  --background-dark-1: #272B35;
+  --background-dark-2: #383C4A;
+  --background-dark-3: #292D36;
+  --background-white: #FFFFFF;
+  
+  --background-grey: #E1E4E7;
+  --background-grey-2: #B8BABF;
+  --background-grey-light: #F5F6F7;
+  
+  --highlight-active: #5294E2;
+  --highlight-inactive: #4877B2;
+  
+  --text-color-dark: #5C616C;
+  --text-color-light: #D3DAE3;
+  --text-color-highlight: #67ABF6;
+  --text-color-white: #FFFFFF;
+	
+  /*---- Menu Toolbar ----*/
+/*
+  --toolbarbutton-hover-background: red !important;
+  --toolbarbutton-hover-bordercolor: red !important;
+*/
+
+  /*---- Folder Tree ----*/
+  --folder-tree-background-color: var(--background-disabled) !important;
+  --folder-tree-text-color: var(--text-color-light);
+  --folder-tree-row-height: auto;
+  --folder-tree-highlight-background-color: var(--background-selected);
+  --folder-tree-highlight-text-color: var(--text-color-white);
+  
+  /*---- Message List ----*/
+  --message-list-header-background-color: var(--background-grey);
+  --message-list-header-text-color: var(--text-color-dark);
+  --message-list-background-color: var(--background-grey-light);
+  --message-list-text-color: var(--text-color);
+  --message-list-row-height: 22px;
+  --message-list-highlight-background-color: var(--highlight-active);
+  --message-list-highlight-text-color: var(--text-color-white);
+  
+  /*---- Scollbar ----*/
+  --scrollbar-thumb-color: var(--background-active);
+  --scrollbar-thumb-hover-color: var(--background-selected);
+  
+  /*---- Message Headers (To/Subject/From etc) ----*/
+  --subject-line-font-size: 100%;
+}
+
+/******************************************************/
+@media(-moz-windows-glass: 0) {
+	#navigation-toolbox {
+		-moz-appearance: none !important;
+		background: var(--background) !important;
+	}
+}
+
+#compose-toolbox, #compose-toolbox > *, #ab-toolbox {
+	-moz-appearance: none !important;
+	background: var(--background-disabled) !important;
+}
+
+.tabmail-tab .tab-content{
+	margin-bottom: 2px !important;
+	border-top-left-radius: 5px !important;
+	border-top-right-radius: 5px !important;
+	background-color: var(--background-dark-1) !important;
+}
+
+.tabmail-tab:hover .tab-content {
+	background-color: var(--background-dark-2) !important;
+}
+
+.tabmail-tab .tab-content *{
+	color: var(--text-color-light) !important;
+}
+
+.tabmail-tab[selected="true"] .tab-content {
+	background-color: var(--background-dark-2) !important;
+  background-image: none !important;
+	color: var(--text-color-light) !important;
+	margin-bottomm: 50px;
+}
+
+.tabmail-tab[selected="true"]:hover .tab-content {
+	background-color: var(--background-dark-2) !important;
+}
+
+.mail-toolbox, .chromeclass-toolbar, .chromeclass-toolbar * {
+	color: var(--text-color-light) !important;
+}
+
+.mail-toolbox {
+	border-bottom: 1px solid var(--background-dark-3) !important;
+	-moz-appearance: none !important;
+	background-color: var(--background-dark-2) !important;
+  background-image: none !important;
+}
+
+#titlebar-min {
+    list-style-image: url(chrome://messenger/skin/icons/caption-buttons.svg#minimize-white) !important;
+}
+
+#titlebar-max {
+    list-style-image: url(chrome://messenger/skin/icons/caption-buttons.svg#maximize-white) !important;
+}
+
+#titlebar-close {
+    list-style-image: url(chrome://messenger/skin/icons/caption-buttons.svg#close-white) !important;
+}
+
+#messengerWindow[sizemode="maximized"] #titlebar-max {
+    list-style-image: url(chrome://messenger/skin/icons/caption-buttons.svg#restore-white) !important;
+}
+
+/* Folder Tree */
+#folderTree {
+	-moz-appearance: none !important;
+	color: var(--text-color-light) !important;
+	background: var(--background-panel) !important;
+	border: none !important;
+}
+
+/*---- Folders ----*/
+#folderTree > treechildren::-moz-tree-cell-text{
+  font-size: 90%;
+}
+
+#folderTree > treechildren::-moz-tree-cell-text(folderNameCol, hasUnreadMessages-true),
+#folderTree > treechildren::-moz-tree-cell-text(folderNameCol, isServer-true, biffState-NewMail),
+#folderTree > treechildren::-moz-tree-cell-text(folderNameCol, isServer-true, newMessages-true),
+#folderTree > treechildren::-moz-tree-cell-text(folderNameCol, isServer-true, hasUnreadMessages-true),
+#folderTree > treechildren::-moz-tree-cell-text(folderNameCol, isServer-true, subfoldersHaveUnreadMessages-true),
+#folderTree > treechildren::-moz-tree-cell-text(folderNameCol, newMessages-true),
+#folderTree > treechildren::-moz-tree-cell-text(folderNameCol, specialFolder-Inbox, newMessages-true) {
+  font-style: italic !important;
+  color: var(--text-color-highlight) !important;
+}
+#folderTree > treechildren::-moz-tree-cell-text(folderNameCol, newMessages-true, selected) {
+  font-style: italic !important;
+	font-weight: bold !important;
+  color: var(--text-color-white) !important;
+}
+#folderTree > treechildren::-moz-tree-cell-text(folderNameCol, hasUnreadMessages-true) {
+  font-style: italic !important;
+	font-weight: bold !important;
+  color: var(--text-color-highlight) !important;
+}
+#folderTree > treechildren::-moz-tree-cell-text(folderNameCol, hasUnreadMessages-true, selected) {
+  font-style: italic !important;
+	font-weight: bold !important;
+  color: var(--text-color-white) !important;
+}
+#folderTree > treechildren::-moz-tree-cell-text(folderNameCol, subfoldersHaveUnreadMessages-true) {
+  font-style: italic !important;
+	font-weight: bold !important;
+  color: var(--text-color-highlight) !important;
+}
+#folderTree > treechildren::-moz-tree-cell-text(folderNameCol, subfoldersHaveUnreadMessages-true, selected) {
+  font-style: italic !important;
+	font-weight: bold !important;
+  color: var(--text-color-white) !important;
+}
+#folderTree > treechildren::-moz-tree-cell-text(folderNameCol, closed, subfoldersHaveUnreadMessages-true) {
+  font-style: italic !important;
+	font-weight: bold !important;
+  color: var(--text-color-highlight) !important;
+}
+#folderTree > treechildren::-moz-tree-cell-text(folderNameCol, closed, subfoldersHaveUnreadMessages-true, selected) {
+  font-style: italic !important;
+	font-weight: bold !important;
+  color: var(--text-color-white) !important;
+}
+
+#folderTree scrollbar {
+	margin: 0 4px !important;
+	width: 6px !important;
+	max-width: 6px !important;
+	-moz-appearance: none !important;
+	background: none !important;
+	border: none !important;
+}
+
+#folderTree srollbarbutton {
+	width: 6px !important;
+	max-width: 6px !important;
+}
+
+#folderTree slider {
+	width: 6px !important;
+	max-width: 6px !important;
+	-moz-appearance: none !important;
+	background: none !important;
+	border: none !important;
+}
+
+#folderTree slider:hover {
+	width: 6px !important;
+	max-width: 6px !important;
+	-moz-appearance: none !important;
+	background: var(--background-background) !important;
+	border: none !important;
+}
+
+#folderTree slider:hover thumb {
+	background: var(--background-selected) !important;
+}
+
+#folderTree thumb {
+	width: 6px !important;
+	max-width: 6px !important;
+	-moz-appearance: none !important;
+	min-height: 100px !important;
+	border: none !important;
+	background: var(--background-active) !important;
+  border-radius: 5px;
+}
+
+#folderTree thumb:hover {
+	background: var(--background-selected) !important;
+}
+
+#folderTree thumb:active {
+	background: var(--background-selected) !important;
+}
+
+/***** Message List & Thread tree *****/
+#threadTree {
+	background: var(--background-grey-light) !important;
+}
+#threadTree treechildren{
+	padding: 0 !important;
+}
+
+#threadTree > treechildren::-moz-tree-row {
+	height: var(--message-list-row-height) !important;
+	border: none !important;
+	background: var(--background-grey-light) !important;
+	border-bottom: 1px solid rgba(127,127,127,0.2) !important;
+}
+
+#threadTree > treechildren::-moz-tree-cell-text {
+	color: var(--text-color-dark) !important;
+}
+
+#threadTree > treechildren::-moz-tree-row(selected) {
+	border: none !important;
+	background: var(--highlight-active) !important;
+}
+
+#threadTree > treechildren::-moz-tree-cell-text(selected) {
+	color: var(--text-color-white) !important;
+}
+
+#threadCols treecol, #threadCols treecolpicker {
+	-moz-appearance: none !important;
+	background: var(--background-grey) !important;
+	color: var(--text-color-dark) !important;
+	border: none !important;
+	padding: 5px !important;
+	min-width: 22px !important;
+}
+
+#threadPane {
+	-moz-appearance: none !important;
+}
+
+#threadTree scrollbar {
+	margin: 0 !important;
+	width: 13px !important;
+	max-width: 13px !important;
+	-moz-appearance: none !important;
+	background: var(--background-white) !important;
+	border-left: 1px solid var(--background-grey) !important;
+}
+
+#threadTree srollbarbutton {
+	width: 10px !important;
+}
+
+#threadTree slider {
+	width: 6px !important;
+	-moz-appearance: none !important;
+	background: none !important;
+	border: none !important;
+	padding-left: 3px !important;
+}
+
+#threadTree slider:hover thumb {
+	background: var(--background-selected) !important;
+}
+
+#threadTree thumb {
+	width: 6px !important;
+	max-width: 6px !important;
+	-moz-appearance: none !important;
+	min-height: 100px !important;
+	border: none !important;
+	background: var(--background-grey-2) !important;
+  border-radius: 5px;
+}
+
+#threadTree thumb:hover {
+	background: var(--background-selected) !important;
+}
+
+#threadTree thumb:active {
+	background: var(--background-selected) !important;
+}
+
+/* Headers Pane */
+#expandedBoxSpacer {
+	display: none !important;
+}
+
+#msgHeaderView {
+	color: var(--text-color-dark) !important;
+	background-color: var(--background-grey) !important;
+	border-bottom: 1px solid rgba(0,0,0,0.25) !important;
+	padding: 2px 0 6px !important;
+}
+
+.msgHeaderView-button {
+	min-width: 0px !important;
+	border-color: transparent !important;
+	background-color: transparent !important;
+	margin: 0px !important;
+	background-image: none !important;
+}
+
+.msgHeaderView-button:hover {
+	border-color: var(--highlight-active) !important;
+}
+
+.msgHeaderView-button > label {
+	display:none;
+}
+
+#expandedHeader2Rows row {
+	display: block !important;
+}
+
+#expandedHeaders {
+	margin-top: 4px !important;
+}
+
+#expandedHeadersNameColumn {
+	min-width: 56px !important;
+	text-align: left !important;
+}
+
+.headerName {
+	min-width: 50px !important;
+	text-align: left !important;
+	margin-inline-end: 0 !important;
+	font-style: italic !important;
+}
+
+#expandedsubjectBox .headerValue {
+	font-size: 100% !important;
+}
+
+.emailStar {
+	margin-inline-start: 4px !important;
+}
+
+/* Message Pane */
+#messagepane {
+}
+
+/* Status Bar */
+#status-bar * {
+	background: var(--background) !important;
+	color: var(--text-color-light) !important;
+}
+
+statusbar {
+	border-top: none !important;
+}
+
+/* ==== LIGHTNING ==== */
+#calendar-list-pane *{
+	background: var(--background-panel) !important;
+	color: var(--text-color-light) !important;
+}

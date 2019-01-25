@@ -1,0 +1,100 @@
+/* ..... twisty ..... */
+treechildren:-moz-tree-twisty { list-style-image: url("folder-pane/twisty-dark.svg") !important; }
+treechildren:-moz-tree-twisty(open) { list-style-image: url("folder-pane/twisty-expanded-dark.svg") !important; }
+#folderTree treechildren:-moz-tree-twisty { list-style-image: url("folder-pane/twisty-light.svg") !important; }
+#folderTree treechildren:-moz-tree-twisty(open) { list-style-image: url("folder-pane/twisty-expanded-light.svg") !important; }
+
+/******* Message view icons ********/
+#folderTree treechildren::-moz-tree-image, #threadTree treechildren::-moz-tree-image {
+	width: 10px !important;
+	-moz-image-region: rect(0px 12px 12px 0px) !important;
+}
+
+/* ..... thread column ..... */
+treechildren::-moz-tree-image(threadCol) { list-style-image: url("message-list/thread-dark.svg") !important; }
+
+/* ..... read column ..... */
+.readColumnHeader { list-style-image: url("message-list/read-header-dark.svg") !important; }
+treechildren::-moz-tree-image(unreadButtonColHeader) { list-style-image: url("message-list/dot-read.svg") !important; }
+treechildren::-moz-tree-image(unreadButtonColHeader, unread) { list-style-image: url("message-list/dot-unread.svg") !important; }
+
+
+/* ..... attachment column ..... */
+.attachmentColumnHeader { list-style-image: url("message-list/paperclip-header-dark.svg") !important; }
+treechildren::-moz-tree-image(attachmentCol, attach) { list-style-image: url("message-list/paperclip.svg") !important; }
+
+/* ..... flag/star column ..... */
+.flagColumnHeader { list-style-image: url("message-list/star-header-dark.svg") !important; }
+treechildren::-moz-tree-image(flaggedCol) { list-style-image: url("message-list/star-empty.svg") !important; }
+treechildren::-moz-tree-image(flaggedCol, flagged) { list-style-image: url("message-list/star-filled.svg") !important; }
+
+/* ..... junkStatus column ..... */
+.junkStatusHeader { list-style-image: url("message-list/flame-junk-header-dark.svg") !important; }
+treechildren::-moz-tree-image(junkStatusCol) { list-style-image: url("message-list/flame-empty.svg") !important; }
+treechildren::-moz-tree-image(junkStatusCol, junk) { list-style-image: url("message-list/flame-junk.svg") !important; }
+treechildren::-moz-tree-image(junkStatusCol, notjunk) { list-style-image: url("message-list/flame-empty.svg") !important; }
+
+/******** Message view reply etc *********/
+treechildren::-moz-tree-image(subjectCol) {
+  -moz-margin-end: 2px;
+  list-style-image: url("message-list/thread-dark.png") !important;
+}
+
+treechildren::-moz-tree-image(subjectCol, forwarded) { list-style-image: url("message-list/forwarded-dark.svg") !important; }
+
+treechildren::-moz-tree-image(subjectCol, replied) { list-style-image: url("message-list/replied-dark.svg") !important; }
+
+treechildren::-moz-tree-image(subjectCol, replied, forwarded) { list-style-image: url("message-list/replied-forwarded-dark.svg") !important; }
+
+treechildren::-moz-tree-image(subjectCol, new) { list-style-image: url("message-list/new.svg") !important; }
+
+
+
+/* ::::: Folder icons for menus   ::::: */
+
+/* Folders */
+treechildren::-moz-tree-image(folderNameCol) { list-style-image: url("folder-pane-arc/folder-light.svg") !important; }
+treechildren::-moz-tree-image(folderNameCol, selected) { list-style-image: url("folder-pane-arc/folder-white.svg") !important; }
+treechildren::-moz-tree-image(folderNameCol, hasUnreadMessages-true) { list-style-image: url("folder-pane-arc/folder.svg") !important; }
+treechildren::-moz-tree-image(folderNameCol, subfoldersHaveUnreadMessages-true) { list-style-image: url("folder-pane-arc/folder.svg") !important; }
+treechildren::-moz-tree-image(folderNameCol, subfoldersHaveUnreadMessages-true, selected) { list-style-image: url("folder-pane-arc/folder-white.svg") !important; }
+treechildren::-moz-tree-image(folderNameCol, closed, subfoldersHaveUnreadMessages-true) { list-style-image: url("folder-pane-arc/folder.svg") !important; }
+treechildren::-moz-tree-image(folderNameCol, closed, subfoldersHaveUnreadMessages-true, selected) { list-style-image: url("folder-pane-arc/folder-white.svg") !important; }
+
+/* Newsgroup */
+treechildren::-moz-tree-image(folderNameCol, serverType-nntp) { list-style-image: url("folder-pane-arc/news-light.svg") !important; }
+
+/* Feed */
+treechildren::-moz-tree-image(folderNameCol, isFeedFolder-true) { list-style-image: url("folder-pane-arc/rss.svg") !important; }
+
+#folderTree treechildren::-moz-tree-image(folderNameCol, specialFolder-Inbox) { list-style-image: url("folder-pane-arc/inbox-light.svg") !important; }
+
+treechildren::-moz-tree-image(folderNameCol, specialFolder-Sent) { list-style-image: url("folder-pane-arc/sent.svg") !important; }
+treechildren::-moz-tree-image(folderNameCol, specialFolder-Sent, selected) { list-style-image: url("folder-pane-arc/sent-white.svg") !important; }
+
+treechildren::-moz-tree-image(folderNameCol, specialFolder-Outbox) { list-style-image: url("folder-pane-arc/outbox-light.svg") !important; }
+
+treechildren::-moz-tree-image(folderNameCol, specialFolder-Drafts) { list-style-image: url("folder-pane-arc/drafts.svg") !important; }
+treechildren::-moz-tree-image(folderNameCol, specialFolder-Drafts, selected) { list-style-image: url("folder-pane-arc/drafts-white.svg") !important; }
+
+treechildren::-moz-tree-image(folderNameCol, specialFolder-Templates) { list-style-image: url("folder-pane-arc/template-light.svg") !important; }
+
+treechildren::-moz-tree-image(folderNameCol, specialFolder-Junk) { list-style-image: url("folder-pane-arc/flame-junk.svg") !important; }
+
+treechildren::-moz-tree-image(folderNameCol, specialFolder-Trash) { list-style-image: url("folder-pane-arc/trash.svg") !important; }
+
+treechildren::-moz-tree-image(folderNameCol, specialFolder-Archive) { list-style-image: url("folder-pane-arc/archive.svg") !important; }
+
+/*.folderMenuItem[SpecialFolder="Virtual"] { list-style-image: url("folder-pane/.svg") !important; }*/
+
+/** IMAP/POP/movemail account nodes */
+treechildren::-moz-tree-image(folderNameCol, isServer-true) { list-style-image: url("folder-pane-arc/email-account-light.svg") !important; }
+
+/* Local folders account node */
+treechildren::-moz-tree-image(folderNameCol, isServer-true, serverType-none) { list-style-image: url("folder-pane-arc/local-account-light.svg") !important; }
+
+/* News server */
+treechildren::-moz-tree-image(folderNameCol, isServer-true, serverType-nntp) { list-style-image: url("folder-pane-arc/news-light.svg") !important; }
+
+/* Feed account node */
+treechildren::-moz-tree-image(folderNameCol, isServer-true, serverType-rss) { list-style-image: url("folder-pane-arc/news-light.svg") !important; }
