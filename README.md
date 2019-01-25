@@ -1,6 +1,9 @@
 # kaipee-config-thunderbird-theme
 
+**This is still a work-in-progress, mostly calendar theme is incomplete**
+
 My custom Thunderbird theme based of the excellent [thunderbird-monterail](https://github.com/spymastermatt/thunderbird-monterail) project.
+
 Colors matched with Arc Dark theme and Paper icons.
 
 ## Getting Started
