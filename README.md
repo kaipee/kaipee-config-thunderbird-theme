@@ -12,7 +12,7 @@ Clone the repository and symlink `chrome` to your Thunderbird themes directory
 
 **Example**
 ```
-ln -s chrome ~/.thunderbird/{user_id}.default/chrome
+ln -s "$(pwd)/chrome" ~/.thunderbird/[random_id].default/chrome
 ```
 
 ## Screenshots
